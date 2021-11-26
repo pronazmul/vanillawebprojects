@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payoneer Bank Deposit Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div id="loginArea" class="container">
+    <divclass="row">
+        <div style="height:100vh;" class="d-flex justify-content-center align-items-center w-100">
+            <div class="card shadow-lg p-4">
+                <div class="card-body">
+                    <h1 class="text-center display-4 font-weight-bold">Welcome To Payoneer Bank</h1><hr>
+                        <div class="form-group">
+                            <label>User Name</label>
+                            <input type="text" placeholder="Enter User Name" class="form-control">
+                        </div><div class="form-group">
+                            <label>User Password</label>
+                            <input type="password" placeholder="Enter Password" class="form-control">
+                        </div>
+
+                        <button id="loginBtn" class="btn btn-success btn-md ">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display:none;" id="transectionArea" class="container">
+
+    <div class="row justify-content-between my-5 w-75 mx-auto mt-5">
+        <div class="col-md-4">
+            <div class="card bg-success shadow-lg text-light rounded">
+                <div class="card-body pl-3 pt-4">
+                    <h4> Deposit</h4>
+                    <h1 class="font-weight-bold ">$ <span id="currentDeposit">00</span></h1>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card bg-info shadow-lg text-light rounded">
+                <div class="card-body pl-3 pt-4">
+                    <h4> Withdrow</h4>
+                    <h1 class="font-weight-bold ">$ <span id="currentWithrow">00</span></h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-danger shadow-lg text-light rounded">
+                <div class="card-body pl-3 pt-4">
+                    <h4> Ballance</h4>
+                    <h1 class="font-weight-bold ">$ <span id="currentAmount">1240</span></h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row justify-content-between my-5 w-75 mx-auto">
+        <div class="col-md-6">
+            <div class="card rounded shadow">
+                <div class="card-body p-4">
+                    <h1>Deposit</h1>
+                    <input id="depositValue" type="text" placeholder="$ Amount You Wanna Deposit" class="form-control my-3">
+                    <button id="depositBtn" class="btn btn-success">Deposit</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card rounded shadow">
+                <div class="card-body p-4">
+                    <h1>Withdrow</h1>
+                    <input id="withrowValue" type="text" placeholder="$ Amount You Wanna Withdrow" class="form-control my-3">
+                    <button id="withrowBtn" class="btn btn-success">Withdrow</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script>
+    // Login Event Handaler..........
+    document.getElementById('loginBtn').addEventListener('click', function(){
+        document.getElementById('loginArea').style.display='none';
+        document.getElementById('transectionArea').style.display='block';
+    })
+
+    document.getElementById('depositBtn').addEventListener('click', function(){
+        //Update Deposit Value
+       depositWithrowAdd('currentDeposit','depositValue');
+       //Update Total value
+       depositWithrowAdd('currentAmount','depositValue');
+       document.getElementById('depositValue').value = "";
+    })
+
+    document.getElementById('withrowBtn').addEventListener('click', function(){
+        //Update Deposit Value
+       depositWithrowAdd('currentWithrow','withrowValue');
+       //Update Total value
+       withrowSubstruct('currentAmount','withrowValue');
+       document.getElementById('withrowValue').value = "";
+    })
+
+    //Function For Add Deposit & withrow to deposit & total value;
+    function depositWithrowAdd(existId,currentId){
+       let current = parseFloat(document.getElementById(existId).innerText);
+       let deposit = parseFloat(document.getElementById(currentId).value);
+       let total = current + deposit;
+       document.getElementById(existId).innerText = total;
+    }
+
+    function withrowSubstruct(existId,currentId){
+       let current = parseFloat(document.getElementById(existId).innerText);
+       let deposit = parseFloat(document.getElementById(currentId).value);
+       let total = current - deposit;
+       document.getElementById(existId).innerText = total;
+    }
+    
+</script>
+</body>
+</html>

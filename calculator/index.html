@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+   <title>Simple Calculator</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="asstes/Bootstrap 4/bootstrap.min.css">
+   <link href="asstes/all.min.css" rel="stylesheet" />
+   <link href="asstes/fontawesome.min.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid background d-flex flex-row align-items-center justify-content-center shadow-lg">
+   <div class="col-md-4">
+      <div class="card py-4 px-4">
+         <div class="card-body">
+            <input id="outPut" type="text" dir="rtl" class="form-control mb-4 font-weight-bolder" value="0" disabled>
+
+            <row class="d-flex flex-row justify-content-between">
+               <button onclick="makeZero()" class=" shadow my-1 btn btn-lg btn-danger rounded rounded-circle font-weight-bolder">C</button>
+               <button onclick="removeSingle()" class=" shadow my-1 btn btn-lg btn-warning rounded rounded-circle icon"><i class="fas fa-backspace"></i></button>
+               <button onclick="makeZero()" class=" shadow my-1 btn btn-lg btn-success rounded rounded-circle font-weight-bolder">%</button>
+               <button onclick="devideNum()" class=" shadow my-1 btn btn-lg btn-success rounded rounded-circle icon"><i class="fas fa-divide"></i></button>
+            </row>
+            <row class="d-flex flex-row justify-content-between">
+               <button onclick="addNumber(7)" class=" shadow my-1 btn btn-lg btn-secondary rounded rounded-circle">7</button>
+               <button onclick="addNumber(8)" class=" shadow my-1 btn btn-lg btn-secondary rounded rounded-circle">8</button>
+               <button onclick="addNumber(9)" class=" shadow my-1 btn btn-lg btn-secondary rounded rounded-circle">9</button>
+               <button class=" shadow my-1 btn btn-lg btn-success rounded rounded-circle icon"><i class="fas fa-times"></i></button>
+            </row>
+            <row class="d-flex flex-row justify-content-between">
+               <button onclick="addNumber(4)" class=" shadow my-1 btn btn-lg btn-secondary rounded rounded-circle">4</button>
+               <button onclick="addNumber(5)" class=" shadow my-1 btn btn-lg btn-secondary rounded rounded-circle">5</button>
+               <button onclick="addNumber(6)" class=" shadow my-1 btn btn-lg btn-secondary rounded rounded-circle">6</button>
+               <button class=" shadow my-1 btn btn-lg btn-success rounded rounded-circle font-weight-bolder">-</button>
+            </row>
+            <row class="d-flex flex-row justify-content-between">
+               <button onclick="addNumber(1)" class=" shadow my-1 btn btn-lg btn-secondary rounded rounded-circle">1</button>
+               <button onclick="addNumber(2)" class=" shadow my-1 btn btn-lg btn-secondary rounded rounded-circle">2</button>
+               <button onclick="addNumber(3)" class=" shadow my-1 btn btn-lg btn-secondary rounded rounded-circle">3</button>
+               <button class=" shadow my-1 btn btn-lg btn-success rounded rounded-circle font-weight-bolder">+</button>
+            </row>
+            <row class="d-flex flex-row justify-content-between">
+               <button class=" my-1 btn btn-lg btn-light rounded rounded-circle" disabled></button>
+               <button onclick="addNumber(0)" class=" shadow my-1 btn btn-lg btn-secondary rounded rounded-circle">0</button>
+               <button class=" my-1 btn btn-lg btn-light rounded rounded-circle" disabled></button>
+               <button class=" shadow my-1 btn btn-lg btn-success rounded rounded-circle font-weight-bolder">=</button>
+            </row>
+         </div>
+      </div>
+   </div>
+
+</div>
+
+
+
+
+<script>
+function devideNum(){
+  devide = parseInt(document.getElementById('outPut').value);
+  document.getElementById('outPut').value = 0;
+  }
+
+
+function makeZero(){
+   document.getElementById('outPut').value = 0;
+}
+
+function addNumber(number){
+   let input = number;
+   let exist = document.getElementById('outPut').value;
+   if( exist == '0'){document.getElementById('outPut').value = input;}
+   else{document.getElementById('outPut').value += input;}
+}
+
+function removeSingle(){
+    let value = document.getElementById('outPut').value;
+
+    if(value.length > 1){
+    let dorp = value.slice(0, -1);
+    document.getElementById('outPut').value = dorp;
+   }else if(value.length == 1){document.getElementById('outPut').value = 0;}
+
+}
+</script>
+</body>
+
+</html>

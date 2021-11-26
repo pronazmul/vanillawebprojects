@@ -1,0 +1,14 @@
+.background{
+	height: 100vh;
+	background-image: url(images/back.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+button{
+	padding: 10px 20px !important;
+}
+button.icon{
+	font-size: 12px;
+	color: aliceblue;;
+}

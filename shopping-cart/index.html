@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="asstes/Bootstrap 4/bootstrap.min.css">
+   <link href="asstes/all.min.css" rel="stylesheet" />
+   <link href="asstes/fontawesome.min.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button onclick="quantityHandler(false, 'phone')"  class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id='phone' type="text" class="form-control text-center" value="1">
+                           <button onclick="quantityHandler(true, 'phone')"  class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="phonePrice">1219</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button onclick="quantityHandler(false, 'case')" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id='case' type="text" class="form-control text-center" value="1">
+                           <button onclick="quantityHandler(true, 'case')" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$ <span id="casePrice">59</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$<span id="subTotal">1278</span></h5>
+                        <h5>$<span id="tax">0</span></h5>
+                        <h5>$<span id="totalPrice">1278</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <script>
+
+function quantityHandler(isIncrease, productName){
+         let product = parseInt(document.getElementById(productName).value);
+         if(isIncrease == true){product = product+1 ;}
+         else if(isIncrease == false && product >0 ){ product = product -1;}
+         else if(product < 0){ product = 0;}
+         document.getElementById(productName).value = product;
+
+         if(productName =='phone'){let phonePrice = product * 1219;
+         document.getElementById('phonePrice').innerText = phonePrice;
+         }
+         if(productName =='case'){let casePrice = product * 59;
+         document.getElementById('casePrice').innerText = casePrice;
+         }
+
+         let phoneTotal = parseInt(document.getElementById('phonePrice').innerText);
+         let caseTotal = parseInt(document.getElementById('casePrice').innerText);
+
+         let subTotal = parseInt(phoneTotal + caseTotal);
+         let tax = parseFloat((subTotal*0.1).toFixed(2));
+         let totalPrice = subTotal + tax;
+
+         document.getElementById('subTotal').innerText = subTotal;
+         document.getElementById('tax').innerText = tax;
+         document.getElementById('totalPrice').innerText = totalPrice;
+
+   }
+
+   </script>
+</body>
+
+</html>

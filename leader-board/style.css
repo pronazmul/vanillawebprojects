@@ -1,0 +1,18 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #E5E5E5;
+}
+.bgbringle{
+    background-color: #562EFF;
+}
+.textbringle{
+    color: #562EFF;
+}
+
+.hours p{
+    font-size:14px;
+    background-color: rgba(243, 114, 114, 0.37);
+    margin: 0px;
+}

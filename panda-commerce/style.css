@@ -1,0 +1,15 @@
+.orange-bg{background-color: #FEEAE9;}
+.price{color:#FF136F;}
+.buy-now-btn{
+    background-image: linear-gradient(to bottom, #FF589B, #FF136F);
+    color:white;
+}
+.cat1{
+    background-image: linear-gradient(to bottom,#FF9C35 , #FFD019);
+}
+.cat2{
+    background-image: linear-gradient(to bottom,#FF589B , #FF136F);
+}
+.cat3{
+    background-image: linear-gradient(to bottom,#4289FF , #07F8C3);
+}
